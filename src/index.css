@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ========= Navbar ========= */
+header {
+  background-color: #1b1c1e;
+}
+nav {
+  padding-inline: 5%;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.links {
+  display: flex;
+}
+
+ul li {
+  position: relative;
+  margin-inline: 8px;
+}
+
+ul li a.active {
+  color: #fff;
+  background-color: rgb(255 255 255 / 13%);
+}
+ul li a.active:hover {
+  background-color: transparent;
+}
+
+ul li a {
+  padding: 8px 20px;
+  position: relative;
+  font-size: 16px;
+  color: #a19f9f;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+ul li a:hover {
+  background-color: rgb(255 255 255 / 13%);
+}
+.nav-btn {
+  display: flex;
+}
+
+.nav-btn-link {
+  padding: 2px 16px;
+  background-color: #3561ec;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.nav-btn-link:hover {
+  opacity: 0.8;
+}
+
+.nav-btn-link span {
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+.nav-btn-link-icon {
+  font-size: 30px;
+  font-style: normal;
+}
+.nav-btn-link-icon::before {
+  display: block;
+}
+
+/* ========= Card ========= */
+#house-card {
+  padding: 5%;
+}
+
+.card-content {
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+}
+
+.card-content.list {
+  display: flex;
+}
+.card-content.list img {
+  max-width: 300px;
+}
+.card-content.list img {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 0;
+
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-content.list div {
+  padding: 3%;
+}
+
+.card-list .card-content {
+  margin-top: 30px;
+}
+
+.card-content div.card-text {
+  padding: 25px 25px 20px 25px;
+}
+.card-content div h2 {
+  font-size: 25px;
+  width: 50%;
+}
+
+.card-content div a {
+  font-size: 12px;
+  color: #587bed;
+  font-family: "Poppins", sans-serif;
+  padding-top: 4px;
+  font-weight: 500;
+}
+
+.card-content div .slider-h3 {
+  font-size: 14px;
+}
+
+.card-content div p {
+  font-size: 14px;
+  color: #a19f9f;
+  font-family: "Poppins", sans-serif;
+  padding-top: 5px;
+  font-weight: 400;
+}
+
+.card-content img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-content img {
+  max-width: 100%;
+}
+
+/* ========= Houses Style ========= */
+.card-house {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.card-content-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* ========= Slider Style ========= */
+.card-slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 35px;
+  /* justify-content: center; */
+}
+.card-slider  img{
+  width: 400px;
+  height: 250px;
+}
+
+.nav-btns{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nav-btns input{
+  width: 20px;
+  cursor: pointer;
+}
+
+
+
+.card-text {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: flex-end;
+}
+
+.card-text .card-btn i {
+  padding: 8px;
+  font-size: 20px;
+  border-radius: 50px;
+  transition: 0.2s ease-in;
+}
+.card-text .card-btn {
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.card-text .card-btn i:hover {
+  cursor: pointer;
+  background-color: rgb(149 149 149 / 13%);
+}

@@ -110,18 +110,21 @@ ul li a:hover {
 .card-content.list {
   display: flex;
 }
-.card-content.list img {
-  max-width: 300px;
+.listImg{
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
 }
+
 .card-content.list img {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-top-right-radius: 0;
-
+max-width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.card-content.list div {
+.card-content.list .card-list-content {
   padding: 3%;
 }
 
@@ -134,7 +137,6 @@ ul li a:hover {
 }
 .card-content div h2 {
   font-size: 25px;
-  width: 50%;
 }
 
 .card-content div a {
@@ -200,6 +202,7 @@ ul li a:hover {
 .nav-btns{
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 15px;
 }
 
@@ -230,4 +233,18 @@ ul li a:hover {
 .card-text .card-btn i:hover {
   cursor: pointer;
   background-color: rgb(149 149 149 / 13%);
+}
+
+
+.card-content.list img{
+
+}
+
+
+.toggle-switch{
+  padding-top: 20px;
+  background: rgba(194, 193, 193, 0.25) !important;
+}
+.ant-switch-checked{
+   background: #3561ec !important;
 }

@@ -29,7 +29,9 @@ const List = () => {
           console.log(list.id);
           return (
             <div key={list.id} className="card-content list">
-              <img src={list.imageUrl} />
+              <div className="listImg">
+              <a href={list.imageUrl}><img src={list.imageUrl} /></a>
+              </div>
               <div className="card-list-content">
                 <div className="card-list-text">
                   <h1>{list.title}</h1>

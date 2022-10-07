@@ -1,43 +1,36 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BiPlusCircle } from "react-icons/bi";  
+import { BiPlusCircle } from "react-icons/bi";
 import { db } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
+import { Switch } from "antd";
 
 const Navbar = (props) => {
-  const [checked, setChecked] = useState(true);
+  const [toggle, setToggle] = useState(false);
+  const ref = doc(db, "link", "on_off");
+  const toggler = () =>{
+    toggle ? setToggle(false): setToggle(true)
+    console.log(toggle);
+  }
 
-  const handleCheckbox = (e) => {
-    if (checked === true) {
-      setChecked(false);
-      console.log(checked);
-    }
-    if (checked === false) {
-      setChecked(true);
-      console.log(checked);
-    }
-    updateCheck()
-  };
 
-  const updateCheck =async ()=>{
-    if (checked === true) {
-      const ref = doc(db, "link", "on_off");
-  
-       return await updateDoc(ref, {
-          is_enabled: true,
-        });
-  
-    }
-  
-    if (checked === false) {
-      const ref = doc(db, "link", "on_off");
+
+  const updateToggle =async ()=>{
+    if (toggle === true) {
        return await updateDoc(ref, {
           is_enabled: false,
         });
-      
+
+    }
+
+    if (toggle === false) {
+       return await updateDoc(ref, {
+          is_enabled: true,
+        });
+
     }
   }
-
+  updateToggle()
 
   return (
     <header>
@@ -55,15 +48,18 @@ const Navbar = (props) => {
             </li>
           </div>
           <div className="nav-btns">
-            <input
+            {/* <input
               type="checkbox"
               value={checked}
               id="onOff"
               name="onOff"
               onChange={handleCheckbox}
-            />
+            /> */}
+
+            <Switch className="toggle-switch" onClick={toggler}/>
+
             <Link to={props.pageLink} className="nav-btn-link">
-             <BiPlusCircle/>
+              <BiPlusCircle />
               <span>{props.pageTitle}</span>
             </Link>
           </div>

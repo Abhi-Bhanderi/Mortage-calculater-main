@@ -21,6 +21,14 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* ========= Navbar ========= */
 header {
   background-color: #1b1c1e;
@@ -108,11 +116,14 @@ ul li a:hover {
 }
 
 .card-content.list {
-  display: flex;
+  display: grid;
+  /* width: 100%; */
+  grid-auto-flow: column;
+  justify-items: stretch;
 }
-.listImg{
+.listImg {
   width: 300px;
-  height: 300px;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -120,7 +131,7 @@ ul li a:hover {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-top-right-radius: 0;
-max-width: 100%;
+  width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -153,7 +164,7 @@ max-width: 100%;
 
 .card-content div p {
   font-size: 14px;
-  color: #a19f9f;
+  color: #676767;
   font-family: "Poppins", sans-serif;
   padding-top: 5px;
   font-weight: 400;
@@ -162,12 +173,8 @@ max-width: 100%;
 .card-content img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.card-content img {
-  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 /* ========= Houses Style ========= */
@@ -194,24 +201,23 @@ max-width: 100%;
   grid-gap: 35px;
   /* justify-content: center; */
 }
-.card-slider  img{
+.slider-img {
   width: 400px;
   height: 250px;
+  overflow: hidden;
 }
 
-.nav-btns{
+.nav-btns {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
 }
 
-.nav-btns input{
+.nav-btns input {
   width: 20px;
   cursor: pointer;
 }
-
-
 
 .card-text {
   display: grid;
@@ -235,16 +241,27 @@ max-width: 100%;
   background-color: rgb(149 149 149 / 13%);
 }
 
-
-.card-content.list img{
-
-}
-
-
-.toggle-switch{
+.toggle-switch {
   padding-top: 20px;
   background: rgba(194, 193, 193, 0.25) !important;
 }
-.ant-switch-checked{
-   background: #3561ec !important;
+.ant-switch-checked {
+  background: #3561ec !important;
+}
+
+.text {
+  display: inline;
+  width: 100%;
+}
+
+.read-or-hide {
+  color: rgb(74, 73, 73);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.delete-icon {
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 20px;
 }

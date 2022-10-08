@@ -20,7 +20,7 @@ const Slider = () => {
   const handleDelete = async (id) => {
     const docRef = doc(db, "slider", id);
     await deleteDoc(docRef);
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
@@ -31,8 +31,14 @@ const Slider = () => {
           console.log(slider);
           return (
             <div key={slider.id} className="card-content">
-              <div className="slider-img">
-                <img src={slider.imageUrl} alt="slider" />
+              <div
+                className="slider-img"
+                style={{ width: "100%", height: 250, overflow: "hidden" }}
+              >
+                <a href={slider.imageUrl} target="_blank" rel="noreferrer">
+                  {" "}
+                  <img src={slider.imageUrl} alt="slider" />{" "}
+                </a>
               </div>
               <div className="card-text">
                 <div>

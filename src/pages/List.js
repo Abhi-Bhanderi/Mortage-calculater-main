@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { db } from "../firebase";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { FaTrash, FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
+import ReadMore from "../components/ReadMore";
+
 const List = () => {
   const [listData, setlistData] = useState([]);
 
@@ -18,7 +20,7 @@ const List = () => {
   const handleDelete = async (id) => {
     const docRef = doc(db, "list", id);
     await deleteDoc(docRef);
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
@@ -30,13 +32,15 @@ const List = () => {
           return (
             <div key={list.id} className="card-content list">
               <div className="listImg">
-              <a href={list.imageUrl}><img src={list.imageUrl} /></a>
+                <a href={list.imageUrl}>
+                  <img src={list.imageUrl} />
+                </a>
               </div>
               <div className="card-list-content">
                 <div className="card-list-text">
                   <h1>{list.title}</h1>
                   <h3>{list.link}</h3>
-                  <p>{list.description}</p>
+                  <ReadMore>{list.description}</ReadMore>
                 </div>
                 <div className="card-btn">
                   <i

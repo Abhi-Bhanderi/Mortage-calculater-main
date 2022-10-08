@@ -10,9 +10,8 @@ const Navbar = (props) => {
   const ref = doc(db, "link", "on_off");
   const toggler = () =>{
     toggle ? setToggle(false): setToggle(true)
-    console.log(toggle);
+  updateToggle()
   }
-
 
 
   const updateToggle =async ()=>{
@@ -30,7 +29,6 @@ const Navbar = (props) => {
 
     }
   }
-  updateToggle()
 
   return (
     <header>

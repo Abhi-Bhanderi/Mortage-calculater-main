@@ -8,8 +8,9 @@ import ReadMore from "../components/ReadMore";
 const List = () => {
   const [listData, setlistData] = useState([]);
 
-  const colRef = collection(db, "list");
   useEffect(() => {
+    const colRef = collection(db, "list");
+
     const getData = async () => {
       const data = await getDocs(colRef);
       setlistData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -33,7 +34,7 @@ const List = () => {
             <div key={list.id} className="card-content list">
               <div className="listImg">
                 <a href={list.imageUrl}>
-                  <img src={list.imageUrl} />
+                  <img src={list.imageUrl} alt="" />
                 </a>
               </div>
               <div className="card-list-content">

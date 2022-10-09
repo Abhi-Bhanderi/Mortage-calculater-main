@@ -78,7 +78,7 @@ const ListForm = () => {
         pauseOnHover
       />
       <div className="admin-form">
-        <h1>Add Slider</h1>
+        <h1>Add List</h1>
         <form onSubmit={handleSubmit}>
           <div className="admin-content">
             <div className="title admin-input">

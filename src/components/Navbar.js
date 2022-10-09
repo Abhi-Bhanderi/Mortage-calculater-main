@@ -1,40 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BiPlusCircle } from "react-icons/bi";
 import { db } from "../firebase";
-import { updateDoc, doc, onSnapshot, getDoc } from "firebase/firestore";
-import { Switch } from "antd";
+import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+// import { Switch } from "antd";
 
-const Navbar = (props) => {
-  const [toggle, setToggle] = useState(false);
+const ToggleSwitch = ({ label }) => {
   const ref = doc(db, "link", "on_off");
+  const [checked, setChecked] = useState(false);
 
-  const toggler = () => {
-    toggle ? setToggle(false) : setToggle(true);
+  const handleChange = async (event) => {
+    if (event.target.checked) {
+      await updateDoc(ref, {
+        is_enabled: true,
+      });
+    } else {
+      await updateDoc(ref, {
+        is_enabled: false,
+      });
+    }
   };
 
-  useEffect(() => {
-    return async () => {
-      if (toggle === true) {
-        return await updateDoc(ref, {
-          is_enabled: false,
-        });
-      }
+  onSnapshot(ref, (doc) => {
+    setChecked(doc.data().is_enabled);
+  });
 
-      if (toggle === false) {
-        return await updateDoc(ref, {
-          is_enabled: true,
-        });
-      }
-    };
-  }, [toggler]);
+  return (
+    <div className="toggle-container">
+      <p style={{ display: "none" }}>{label}</p>
+      <div className="toggle-switch">
+        <input
+          type="checkbox"
+          className="checkbox"
+          name={label}
+          id={label}
+          onChange={handleChange}
+          checked={checked}
+        />
+        <label className="label" htmlFor={label}>
+          <span className="inner" />
+          <span className="switch" />
+        </label>
+      </div>
+    </div>
+  );
+};
 
-  // const isChecked = () => {
-  //   getDoc(ref).then((doc) => {
-  //     return doc.data().is_enabled;
-  //   });
-  // };
-
+const Navbar = (props) => {
   return (
     <header>
       <nav>
@@ -51,7 +63,13 @@ const Navbar = (props) => {
             </li>
           </div>
           <div className="nav-btns">
-            <Switch className="toggle-switch" onClick={toggler} />
+            {/* <Switch
+              className="toggle-switch"
+              onClick={toggler}
+              onChange={(e) => setState(e.target.value)}
+            /> */}
+
+            <ToggleSwitch label="ON_OFF_switch" />
 
             <Link to={props.pageLink} className="nav-btn-link">
               <BiPlusCircle />

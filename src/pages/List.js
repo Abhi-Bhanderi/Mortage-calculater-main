@@ -40,7 +40,10 @@ const List = () => {
               <div className="card-list-content">
                 <div className="card-list-text">
                   <h1>{list.title}</h1>
-                  <h3>{list.link}</h3>
+                  <h3 style={{ display: "inline" }}>
+                    <a href={`http://${list.link}`}>{list.link}</a>
+                  </h3>{" "}
+                  <br />
                   <ReadMore>{list.description}</ReadMore>
                 </div>
                 <div className="card-btn">

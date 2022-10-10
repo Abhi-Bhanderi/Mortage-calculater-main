@@ -63,12 +63,6 @@ const Navbar = (props) => {
             </li>
           </div>
           <div className="nav-btns">
-            {/* <Switch
-              className="toggle-switch"
-              onClick={toggler}
-              onChange={(e) => setState(e.target.value)}
-            /> */}
-
             <ToggleSwitch label="ON_OFF_switch" />
 
             <Link to={props.pageLink} className="nav-btn-link">

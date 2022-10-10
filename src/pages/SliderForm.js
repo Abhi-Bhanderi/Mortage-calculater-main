@@ -30,10 +30,9 @@ const SliderForm = () => {
   }
 
   const uploadImage = () => {
-    if (image == null) 
-    setUploadingBoolean(true);
-    
-    const imageRef = ref(storage, `Slider/${image.name}` + v4());
+    if (image == null) setUploadingBoolean(true);
+
+    const imageRef = ref(storage, `Slider/${image.name}`);
 
     uploadBytes(imageRef, image).then(() => {
       getDownloadURL(imageRef)
@@ -46,8 +45,6 @@ const SliderForm = () => {
           console.log(error.message);
         });
     });
-
-    
   };
   const colRef = collection(db, "slider");
 
@@ -72,7 +69,7 @@ const SliderForm = () => {
     <>
       <Navbar pageTitle="go to slider" pageLink="/Slider" />
       <ToastContainer
-        position="top-center"
+        position="top-right"
         autoClose={2000}
         hideProgressBar={true}
         newestOnTop={false}

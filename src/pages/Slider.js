@@ -1,34 +1,39 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { db } from "../firebase";
-import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
-import { FaTrashAlt } from "react-icons/fa";
+import { collection, deleteDoc, onSnapshot, doc } from "firebase/firestore";
+import { BiTrash, BiEdit } from "react-icons/bi";
+import Modal from "../components/Modal";
+
 const Slider = () => {
   const [sliderData, setSliderData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [id, setId] = useState("");
 
   useEffect(() => {
     const colRef = collection(db, "slider");
-    const getData = async () => {
-      const data = await getDocs(colRef);
-
-      setSliderData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getData();
+    onSnapshot(colRef, (doc) => {
+      setSliderData(doc.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
   }, []);
 
   const handleDelete = async (id) => {
-    const docRef = doc(db, "slider", id);
-    await deleteDoc(docRef);
-    window.location.reload();
+    const deleteRef = doc(db, "slider", id);
+    await deleteDoc(deleteRef);
+  };
+
+  const handleEdit = async (id) => {
+    setIsOpen(true);
+    setId(id);
   };
 
   return (
     <>
       <Navbar pageTitle="Add slider" pageLink="/SliderForm" />
+      {isOpen && <Modal setIsOpen={setIsOpen} id={id} />}
       <div id="house-card" className="card-slider">
         {sliderData.map((slider) => {
-          console.log(slider);
+          console.table({ ...slider });
           return (
             <div key={slider.id} className="card-content">
               <div
@@ -47,12 +52,16 @@ const Slider = () => {
                     <a href={`http://${slider.link}`}>{slider.link}</a>
                   </h3>
                 </div>
-                <div className="card-btn">
+                <div className="card-btn slider-btn">
+                  <i className="edit-icon">
+                    <BiEdit onClick={() => handleEdit(slider.id)} />
+                  </i>
+
                   <i
                     className="delete-icon"
                     onClick={() => handleDelete(slider.id)}
                   >
-                    <FaTrashAlt />
+                    <BiTrash />
                   </i>
                 </div>
               </div>

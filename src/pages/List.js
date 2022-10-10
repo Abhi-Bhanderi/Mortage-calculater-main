@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { db } from "../firebase";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { FaTrashAlt } from "react-icons/fa";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
+import { BiTrash, BiEdit } from "react-icons/bi";
 import ReadMore from "../components/ReadMore";
 
 const List = () => {
@@ -10,19 +10,20 @@ const List = () => {
 
   useEffect(() => {
     const colRef = collection(db, "list");
-
-    const getData = async () => {
-      const data = await getDocs(colRef);
-      setlistData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getData();
+    onSnapshot(colRef, (doc) => {
+      setlistData(doc.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
   }, []);
 
   const handleDelete = async (id) => {
     const docRef = doc(db, "list", id);
     await deleteDoc(docRef);
-    window.location.reload();
   };
+
+  // const handleEdit = async (id) => {
+  //   setIsOpen(true);
+  //   setId(id);
+  // };
 
   return (
     <>
@@ -47,11 +48,15 @@ const List = () => {
                   <ReadMore>{list.description}</ReadMore>
                 </div>
                 <div className="card-btn">
+                  <i className="edit-icon">
+                    {/* <BiEdit sonClick={() => handleEdit(list.id)} /> */}
+                  </i>
+
                   <i
                     className="delete-icon"
                     onClick={() => handleDelete(list.id)}
                   >
-                    <FaTrashAlt />
+                    <BiTrash />
                   </i>
                 </div>
               </div>

@@ -11,6 +11,7 @@
 
 body {
   background-color: #f9f9f9;
+  position: relative;
 }
 
 li {
@@ -112,7 +113,11 @@ ul li a:hover {
 .card-content {
   background-color: #fff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 10px;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
+}
+.card-content:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 10px 18px 0px;
 }
 
 .card-content.list {
@@ -165,7 +170,7 @@ ul li a:hover {
   padding: 0 !important;
 }
 
-.delete-icon {
+.slider-btn .delete-icon {
   cursor: pointer;
   margin-top: 10px;
   padding: 10px;
@@ -206,8 +211,8 @@ ul li a:hover {
 }
 
 .card-content img {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   object-fit: cover;
   width: 100%;
 }
@@ -235,7 +240,7 @@ ul li a:hover {
   grid-template-rows: repeat(3, 1fr);
 
   align-items: start;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
 }
 .slider-img {
   width: 400px;
@@ -360,4 +365,12 @@ img {
 }
 .checkbox:checked + .label .switch {
   right: 0px;
+}
+
+.list .card-btn {
+  display: inline;
+}
+.list .card-btn i {
+  cursor: pointer;
+  font-size: 20px;
 }
